@@ -5,6 +5,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class RedisController {
-    @Value("server.port")
-    private int serverPort;
+    @Value("{server.port}")
+    private String serverPort;
 }
