@@ -1,5 +1,8 @@
 package com.ruobai;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ruobai.pojo.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,6 +13,8 @@ import org.springframework.data.redis.core.RedisTemplate;
 public class SpringRedisTest01 {
     @Autowired
     private RedisTemplate redisTemplate;
+    @Autowired
+    private User user;
     @Test
     void contextLoads(){
         //String
@@ -27,6 +32,13 @@ public class SpringRedisTest01 {
         redisConnection.flushAll();
         redisTemplate.opsForValue().set("mykey","ruobai");
         System.out.println(redisTemplate.opsForValue().get("mykey"));
-
+    }
+    @Test
+    void test() throws JsonProcessingException {
+        user.setName("ruobai");
+        user.setAge(3);
+        // String JsonUser = new ObjectMapper().writeValueAsString(user);
+        redisTemplate.opsForValue().set("user",user);
+        System.out.println(redisTemplate.opsForValue().get("user"));
     }
 }
