@@ -25,5 +25,8 @@ public class SpringRedisTest01 {
         RedisConnection redisConnection = redisTemplate.getConnectionFactory().getConnection();
         redisConnection.flushDb();
         redisConnection.flushAll();
+        redisTemplate.opsForValue().set("mykey","ruobai");
+        System.out.println(redisTemplate.opsForValue().get("mykey"));
+
     }
 }
