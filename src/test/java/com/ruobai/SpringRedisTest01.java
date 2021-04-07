@@ -1,17 +1,19 @@
 package com.ruobai;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ruobai.pojo.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.RedisTemplate;
 
+
 @SpringBootTest
 public class SpringRedisTest01 {
     @Autowired
+    @Qualifier("redisTemplate")
     private RedisTemplate redisTemplate;
     @Autowired
     private User user;
